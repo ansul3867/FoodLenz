@@ -1,7 +1,8 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { FoodAnalysis, UserProfile, UserPreferences, Ingredient } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Use the Vite standard (import.meta.env)
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 const cleanJsonString = (str: string): string => {
   let cleaned = str.trim();
