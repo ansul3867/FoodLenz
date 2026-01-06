@@ -1,0 +1,7 @@
+{
+  "name": "FoodLenz",
+  "description": "An intelligent food ingredient analyzer and nutrition assistant tailored to your specific health needs.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
