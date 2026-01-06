@@ -74,7 +74,7 @@ export const analyzeFoodImage = async (base64Image: string, profile: UserProfile
   `;
 
   const response = await ai.models.generateContent({
-    model: "gemini-1.5-flash",
+    model: "gemini-1.5-flash-latest",
     contents: {
       parts: [
         { inlineData: { mimeType: 'image/jpeg', data: base64Image } },
@@ -110,7 +110,7 @@ export const analyzeFoodText = async (query: string, profile: UserProfile, prefs
 
   // Using gemini-3-flash-preview for better JSON adherence on text tasks
   const response = await ai.models.generateContent({
-    model: "gemini-1.5-flash",
+    model: "gemini-1.5-flash-latest",
     contents: prompt,
     config: {
       responseMimeType: "application/json"
@@ -159,7 +159,7 @@ export const recalculateAnalysis = async (
   `;
 
   const response = await ai.models.generateContent({
-    model: "gemini-1.5-flash",
+    model: "gemini-1.5-flash-latest",
     contents: prompt,
     config: { responseMimeType: "application/json" }
   });
@@ -177,7 +177,7 @@ export const chatWithFoodAI = async (
 ): Promise<string> => {
   
   const chat = ai.chats.create({
-    model: "gemini-1.5-flash",
+    model: "gemini-1.5-flash-latest",
     history: [
       {
         role: 'user',
