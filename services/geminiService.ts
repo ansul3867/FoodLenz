@@ -74,7 +74,7 @@ export const analyzeFoodImage = async (base64Image: string, profile: UserProfile
   `;
 
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash-image',
+    model: 'gemini-1.5-flash-image',
     contents: {
       parts: [
         { inlineData: { mimeType: 'image/jpeg', data: base64Image } },
@@ -110,7 +110,7 @@ export const analyzeFoodText = async (query: string, profile: UserProfile, prefs
 
   // Using gemini-3-flash-preview for better JSON adherence on text tasks
   const response = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
+    model: 'gemini-1.5-flash-preview',
     contents: prompt,
     config: {
       responseMimeType: "application/json"
