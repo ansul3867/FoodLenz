@@ -49,11 +49,16 @@ export default function App() {
       image: image
     };
     
-    setState(prev => {
-      const updatedHistory = [newEntry, ...prev.history].slice(0, 20);
-      localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(updatedHistory));
-      return { ...prev, history: updatedHistory };
-    });
+    // ✅ NEW CODE (Copy and paste this)
+setState(prev => {
+  const updatedHistory = [newEntry, ...prev.history].slice(0, 20);
+  
+  // Create a lightweight copy for storage (removes the heavy image)
+  const historyForStorage = updatedHistory.map(item => ({ ...item, image: null }));
+  localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(historyForStorage));
+  
+  return { ...prev, history: updatedHistory };
+});
   };
 
   const startAnalysis = async (action: () => Promise<FoodAnalysis>, imageBase64?: string) => {
